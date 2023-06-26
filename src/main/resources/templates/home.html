@@ -1,6 +1,61 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            opacity: 0; /* Initial opacity set to 0 */
+            animation: fade-in 1s ease-in-out forwards; /* Animation applied */
+        }
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        button {
+            background-color: red;
+            width: 60px;
+            height: 30px;
+        }
+        h1 {
+            color: white;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
 <body>
-<img src="https://i.pinimg.com/564x/25/5b/e5/255be589930d1323c77dfce75373cc82.jpg">
-<a href="/logout">logout</a>
+<div class="container">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_sxz1kenv.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+    <h1>Hy .... Welcome  &#x1F44B; <span th:text="${username}"></span>
+        <p>
+          <span sec:authentication="principal.username"></span>
+            <br>
+            <span sec:authentication="principal.authorities"></span>
+        </p>
+    </h1>
+
+
+
+    <button>
+        <a href="/logout">logout</a>
+    </button>
+</div>
 </body>
 </html>
